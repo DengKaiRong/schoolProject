@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>校园项目-学生明细</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../js/layui/css/layui.css"/>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/layui/layui.js"></script>
+<script type="text/javascript" src="../js/highcharts.js"></script>
+<script type="text/javascript" src="../js/basic.js"></script>
+</head>
+
+<body>
+	<!--顶部-->
+	<div class="xyhead"><img src="../images/logo1-default.png"/></div>
+	<!--左侧导航-->
+	<div class="xynav">
+		<div class="xynavc">
+			<ul>
+				<li class="on">
+					<h4>校园项目</h4>
+					<div>
+						<a href="summary.html">汇总报表</a>
+						<a href="setup.html">设置资料</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--右侧内容-->
+	<div class="xycon">
+		<div class="xycona">
+			<div class="pertop">
+				<div class="xy_h4"><h4>学生明细数据</h4></div>
+				<form action="#" id="perform">
+				<div class="xy_icon">
+				    <div class="xy_inline">
+				      <label>学号：</label>
+				      <div class="xy_dinput">
+				        <input type="text" value="0001"  class="xy_input">
+				      </div>
+				    </div>
+				    <div class="xy_inline">
+				      <label>姓名：</label>
+				      <div class="xy_dinput">
+				        <input type="text" value="马可波罗"  class="xy_input died" disabled="disabled">
+				      </div>
+				    </div>
+				     <div class="xy_inline">
+				      <label>手环：</label>
+				      <div class="xy_dinput">
+				         <input type="text" value="学生手环1"  class="xy_input died" disabled="disabled">
+				      </div>
+				    </div>
+				    <div class="xy_inline">
+				      <label>日期：</label>
+				      <div class="xy_dinput">
+				        <input type="text" value="2017-04-14"  class="xy_input died" disabled="disabled">
+				      </div>
+				    </div>
+				     <div class="xy_inline">
+				      <label>步数：</label>
+				      <div class="xy_dinput">
+				        <input type="text" value="5200"  class="xy_input died" disabled="disabled">
+				      </div>
+				    </div>
+				    <div class="xy_inline">
+				      <label>心率：</label>
+				      <div class="xy_dinput">
+				        <input type="text" value="75"  class="xy_input died" disabled="disabled">
+				      </div>
+				    </div>
+				    <div class="xy_inline">
+				      <div class="xy_dinput">
+				      	<label></label>
+				        <input type="submit"  class="xy_but" value="查询">
+				      </div>
+				    </div>
+  				</div>
+				</form>  
+			</div>
+			<div class="percon">
+				<div class="xy_h4"><h4>运动数据</h4></div>
+				<div class="percx">
+					<h4><span>马可波罗</span>运动数据对比图</h4>
+					<div class="container" id="container3"></div>
+				</div>
+				<div class="percx">
+					<h4><span>马可波罗</span>心率数据对比图</h4>
+					<div class="container" id="container4"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
