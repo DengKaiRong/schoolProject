@@ -1,6 +1,6 @@
 'use strict';
 
-// get请求，vue vue势力,url地址，params参数，callback回调函数
+// get请求，vue vue实例, url地址, params参数, callback回调函数
 exports.get = function (vue, url, params, callback) {
   vue.$http({
     method: 'GET',
@@ -12,7 +12,7 @@ exports.get = function (vue, url, params, callback) {
   });
 };
 
-// post，vue vue势力,url地址，params参数，callback回调函数
+// post，vue vue实例, url地址, params参数, callback回调函数
 exports.post = function (vue, url, params, callback) {
   vue.$http({
     method: 'POST',
