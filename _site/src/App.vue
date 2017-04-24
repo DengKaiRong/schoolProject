@@ -21,44 +21,13 @@
       <router-view></router-view>
     </div>
   </div>
+  
 </template>
 
 <script>
-
-import $ from 'jquery'
-window.$ = $
-window.jQuery = $
-
-import {getOriginData} from './net'
-import './assets/js/highcharts.js'
-
 export default {
-    name: 'app',
-    data(){
-        return{
-        }
-    },
-
-    mounted(){
-      this.getData();
-    },
-
-    methods:{
-
-      getData(){
-
-        const callback = (response) => {
-          console(response)
-        }
-
-        const params = {
-        }
-
-        getOriginData(this, window.getHealthReportURL, params, callback)
-      }
-    }
+  name: 'app'
 }
-
 </script>
 
 <style>

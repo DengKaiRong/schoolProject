@@ -3,11 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import $ from 'jquery'
-import Path from './path'
+
+import './net.js'
+import './path.js'
+
 import './assets/css/style.css'
-// import './assets/js/highcharts.js'
 // import './assets/js/basic.js'
+// import './assets/js/highcharts.js'
+// import './assets/js/jquery-1.7.2.min.js'
 
 Vue.config.productionTip = false
 

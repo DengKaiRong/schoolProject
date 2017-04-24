@@ -1,7 +1,6 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
-var webpack = require('webpack')
 var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -23,8 +22,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      'jquery': 'jquery'
+      '@': resolve('src')
     }
   },
   module: {
@@ -56,14 +54,5 @@ module.exports = {
         }
       }
     ]
-  },
-  // 引入jq
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
-      'window.jquery': 'jquery'
-    })
-  ]
+  }
 }

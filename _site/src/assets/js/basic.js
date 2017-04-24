@@ -10,7 +10,7 @@ $(function(){
 	})
 	
 	 //设置资料删除提示
-	$('.summt_tb td .del').on('click',function(){
+	$('.summt_tb td .del').live('click',function(){
 		var $this=$(this).parents('tr');
 		layer.confirm('确定删除这条数据吗？', {
 	  		btn: ['确定','再想想'] //按钮
@@ -21,7 +21,7 @@ $(function(){
 		});
 	})
 	//设置资料编辑资料
-	$('.summt_tb td .edit').on('click',function(){
+	$('.summt_tb td .edit').live('click',function(){
 		layer.open({
 		  type: 1,
 		  title:'编辑资料',

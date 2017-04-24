@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>校园项目</title>
+<link rel="stylesheet" href="../css/style.css" />
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/highcharts.js"></script>
+<script type="text/javascript" src="../js/basic.js"></script>
+</head>
+
+<body>
+	<!--顶部-->
+	<div class="xyhead"><img src="../images/logo1-default.png"/></div>
+	<!--左侧导航-->
+	<div class="xynav">
+		<div class="xynavc">
+			<ul>
+				<li class="on">
+					<h4>校园项目</h4>
+					<div>
+						<a class="cur" href="summary.html">汇总报表</a>
+						<a href="setup.html">设置资料</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--右侧内容-->
+	<div class="xycon">
+		<div class="xycona">
+			<div class="summt">
+				<div class="xy_h4"><h4>学生健康报表</h4></div>
+				<div class="summt_tb">
+					<table  cellspacing="0" cellpadding="0">
+						<tr>
+							<th>序号</th>
+							<th>学号</th>
+							<th>姓名</th>
+							<th>手环名称</th>
+							<th>运动步数</th>
+							<th>最后心率</th>
+							<th>步数排名</th>
+						</tr>
+						<tr onclick="loca()">
+							<td>1</td>
+							<td>0001</td>
+							<td>马可波罗</td>
+							<td>学生手环1</td>
+							<td>7053</td>
+							<td>63</td>
+							<td>2</td>
+						</tr>
+						<tr onclick="loca()">
+							<td>2</td>
+							<td>0002</td>
+							<td>虞姬</td>
+							<td>学生手环2</td>
+							<td>8193</td>
+							<td>82</td>
+							<td>1</td>
+						</tr>
+						<tr onclick="loca()">
+							<td>3</td>
+							<td>0003</td>
+							<td>荆轲</td>
+							<td>学生手环3</td>
+							<td>5432</td>
+							<td>50</td>
+							<td>3</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="summc">
+				<div class="xy_h4"><h4>班级运动数据对比</h4></div>
+				<div class="summcx">
+					<h4><span>王者班</span>运动数据对比图</h4>
+					<div class="container" id="container1"></div>
+				</div>
+				<div class="summcx">
+					<h4><span>王者班</span>心率数据对比图</h4>
+					<div class="container" id="container2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
