@@ -94,35 +94,47 @@
     methods: {
       getDetail (id) {
         const callBack = (response) => {
+
           if (response.body.status == '200') {
-            this.data = response.body.result.detailData;
-            // 运动数据图表展示
-            const sportDatas = response.body.result.sportData;
-            var sport = {
-              steps: [],
-              stepTime: []
+
+            if (response.body.result == null) {
+                this.$message.error('空数据!')
+            }else{
+                this.data = response.body.result.detailData;
+                // 运动数据图表展示
+                const sportDatas = response.body.result.sportData;
+                var sport = {
+                  steps: [],
+                  stepTime: []
+                }
+                for (let sportItem of sportDatas) {
+                  sport.steps.push(sportItem.steps);
+                  sport.stepTime.push(sportItem.stepTime);
+                }
+                this.sportData(sport);
+                // 心率数据图表展示
+                const heartDatas = response.body.result.heartData;
+                var heart = {
+                  number: [],
+                  hearTime: []
+                }
+                for (let heartItem of heartDatas) {
+                  heart.number.push(heartItem.number);
+                  heart.hearTime.push(heartItem.hearTime);
+                }
+                this.heartData(heart);
             }
-            for (let sportItem of sportDatas) {
-              sport.steps.push(sportItem.steps);
-              sport.stepTime.push(sportItem.stepTime);
-            }
-            this.sportData(sport);
-            // 心率数据图表展示
-            const heartDatas = response.body.result.heartData;
-            var heart = {
-              number: [],
-              hearTime: []
-            }
-            for (let heartItem of heartDatas) {
-              heart.number.push(heartItem.number);
-              heart.hearTime.push(heartItem.hearTime);
-            }
-            this.heartData(heart);
+
+          }else{
+            this.$message.error(response.body.msg)
           }
         };
+
         postOriginData(this, window.getHealthDetailURL, { studentNo: id }, callBack);
+
       },
       search () {
+        console.log(this.data.studentNo)
         this.getDetail(this.data.studentNo);
       },
       sportData (item) {

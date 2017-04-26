@@ -97,6 +97,8 @@
 							heartRate.data.push(parseInt(heartRateData[headItem]));
 						}
 						this.heartRateData(heartRate);
+					}else{
+						this.$message.error(response.body.msg)
 					}
 				};
 				getOriginData(this, window.getHealthReportURL, {}, callBack);
