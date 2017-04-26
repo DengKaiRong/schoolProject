@@ -96,9 +96,26 @@
         const callBack = (response) => {
 
           if (response.body.status == '200') {
-
-            if (response.body.result == null) {
-                this.$message.error('空数据!')
+            if (JSON.stringify(response.body.result) == '{}'){
+                this.$message.error('暂无数据')
+                this.data = {
+                  studentNo: this.data.studentNo,
+                  userName: '',
+                  type: '',
+                  steps: '',
+                  date: '',
+                  number: ''
+                }
+                var sport = {
+                  steps: [],
+                  stepTime: []
+                }
+                this.sportData(sport);
+                var heart = {
+                  number: [],
+                  hearTime: []
+                }
+                this.heartData(heart);
             }else{
                 this.data = response.body.result.detailData;
                 // 运动数据图表展示
