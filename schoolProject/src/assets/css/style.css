@@ -50,7 +50,7 @@ a:hover{ color:#f28203; text-decoration:none;}
 .no_curp table td{ cursor:auto;}
 
 /*编辑资料*/
-.editcon{ width: 380px; padding:20px; background: #fff; display: none;}
+.editcon{ width: 380px; padding:20px; background: #fff;}
 .ed_icon .xy_inline{ margin-bottom: 15px;}
 .ed_oper{text-align: center;}
 .ed_oper a{ height: 36px;line-height: 36px;display: inline-block;padding: 0 20px;background: #009688;text-align: center;color: #fff; border: 1px solid #eee; background: #f8f8f8; border-radius: 5px; color: #666;}

@@ -1,6 +1,31 @@
 <template>
 	<div>
 		<!--资料编辑框-->
+
+		<el-dialog title="修改资料" v-model="editFlag">
+			  <el-form>
+			    <el-form-item label="学号" :label-width="formLabelWidth">
+			      	<el-input auto-complete="off"></el-input>
+			    </el-form-item>
+			    <el-form-item label="活动名称" :label-width="formLabelWidth">
+			  		<el-input auto-complete="off"></el-input>
+			    </el-form-item>
+			    <el-form-item label="手环":label-width="formLabelWidth">
+			      	<el-select placeholder="请选择手环">
+				        <el-option label="区域一" value="shanghai"></el-option>
+				        <el-option label="区域二" value="beijing"></el-option>
+				    </el-select>
+			    </el-form-item>
+			    <el-form-item label="Mac":label-width="formLabelWidth">
+			  		<el-input auto-complete="off"></el-input>
+			    </el-form-item>
+			  </el-form>
+			  <div slot="footer" class="dialog-footer">
+			  	<el-button @click="editFlag = false">确定</el-button>
+			    <el-button @click="editFlag = false">取 消</el-button>
+			  </div>
+		</el-dialog>
+			
 		<div class="editcon">
 			<div class="ed_icon">
 				<form action="#">
@@ -33,8 +58,7 @@
 					  </div>
 				</div>
 				<div class="ed_oper">
-					<!-- <input class="xy_but" type="submit" value="保存"/> -->
-					<input class="xy_but" @click="gotoDetails(val)" value="保存"/>
+					<input class="xy_but" type="submit" value="保存"/>
 					<a href="javascript:void(0)">取消</a>
 				</div>
 			</form>
@@ -50,19 +74,19 @@
 					    <div class="xy_inline">
 					      <label>学号：</label>
 					      <div class="xy_dinput">
-					        <input  type="text"  class="xy_input">
+					        <input  type="text"  class="xy_input" v-model="student.studentNo">
 					      </div>
 					    </div>
 					    <div class="xy_inline">
 					      <label>姓名：</label>
 					      <div class="xy_dinput">
-					        <input  type="text"  class="xy_input">
+					        <input  type="text"  class="xy_input" v-model="student.userName">
 					      </div>
 					    </div>
 					     <div class="xy_inline">
 					      <label>手环：</label>
 					      <div class="xy_dinput">
-					         <select class="xy_select">
+					         <select class="xy_select" v-model="student.type">
 	        					<option value="学生手环1">学生手环1</option>
 	        					<option value="学生手环2">学生手环2</option>
 	        					<option value="学生手环3">学生手环3</option>
@@ -72,13 +96,13 @@
 					    <div class="xy_inline">
 					      <label>手环MAC：</label>
 					      <div class="xy_dinput">
-					        <input type="text"  class="xy_input">
+					        <input type="text"  class="xy_input" v-model="student.mac">
 					      </div>
 					    </div>
 					    <div class="xy_inline">
 					      <div class="xy_dinput">
 					      	<label></label>
-					        <input type="submit"  class="xy_but" value="保存">
+					        <input class="xy_but" @click="save_add" value="保存">
 					      </div>
 					    </div>
 	  				</div>
@@ -97,14 +121,17 @@
 								<th>绑定时间</th>
 								<th>操作</th>
 							</tr>
-							<tr v-for="(val, index) of list" @click="gotoDetails(val)">
+							<tr v-for="(val, index) of list" >
 								<td>{{index + 1}}</td>
 								<td>{{val.studentNo}}</td>
 								<td>{{val.userName}}</td>
 								<td>{{val.type}}</td>
 								<td>{{val.mac}}</td>
-								<td>{{val.number}}</td>
-								<td><a href="javascript:void(0)" class="edit">编辑</a><a  href="javascript:void(0)" class="del">删除</a></td>
+								<td>{{val.creTime}}</td>
+								<td>
+								<a @click="edit(val)" class="edit">编辑</a>
+								<a @click="del(val)" class="del">删除</a>
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -115,7 +142,8 @@
 </template>
 
 <script>
-	import { getOriginData } from '../framework/service.js';
+
+	import { getOriginData, postOriginData } from '../framework/service.js';
 	import $ from '../assets/js/jquery-vendor.js';
 	import Highcharts from '../assets/js/highcharts.js';
 
@@ -137,7 +165,15 @@
 		},
 		data () {
 			return {
-				list: []
+				list: [],
+				student:{
+					studentNo:"",
+					userName:"",
+					mac:"",
+					type:"学生手环1"
+				},
+				editFlag:false,
+				formLabelWidth: '70px'
 			};
 		},
 		methods: {
@@ -170,6 +206,49 @@
 					}
 				};
 				getOriginData(this, window.getHealthReportURL, {}, callBack);
+			},
+			//添加学生绑定手环
+			save_add (){
+
+				if (this.student.studentNo != "" && this.student.userName != "" && this.student.mac != "" && this.student.type != "") {
+
+					const callBack = (response) => {
+						if (response.body.status == '200') {
+							//请求数据刷新 
+							this.getData();
+							//初始化
+							this.student = {
+								studentNo:"",
+								userName:"",
+								mac:"",
+								type:"学生手环1"
+							}
+						}
+					};
+
+					var params = {
+						studentNo : this.student.studentNo,
+						userName : this.student.userName,
+						mac : this.student.mac,
+						type : this.student.type
+					}
+
+					console.log(params)
+					postOriginData(this, window.getBindURL, params, callBack);
+
+				}else{
+					//弹出提示框
+					this.$message('资料填写有误!');
+				}
+
+			},
+			//编辑框
+			edit (item) {
+				console.log(item)
+				this.editFlag = true
+			},
+			del (item) {
+				console.log(item)
 			},
 			sportsData (item) {
 				$('#container1').highcharts({
