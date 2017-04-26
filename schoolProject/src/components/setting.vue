@@ -181,6 +181,10 @@
 
 					const callBack = (response) => {
 						if (response.body.status == '200') {
+							this.$message({
+					          message: '更新成功!',
+					          type: 'success'
+					        });
 							//请求数据刷新 
 							this.getData();
 							//初始化
@@ -190,6 +194,8 @@
 								mac:"",
 								type:"学生手环1"
 							}
+						}else{
+							this.$message.error(response.body.msg)
 						}
 					};
 
@@ -200,34 +206,74 @@
 						type : this.student.type
 					}
 
-					console.log(params)
 					postOriginData(this, window.getBindURL, params, callBack);
 
 				}else{
 					//弹出提示框
-					this.$message('资料填写有误!');
+					this.$message.error('资料填写有误!');
 				}
 
 			},
 			//编辑框
 			edit (item) {
-				console.log(item)
 
 				this.editStudent.studentNo = item.studentNo
 				this.editStudent.userName = item.userName
 				this.editStudent.mac = item.mac
 				this.editStudent.type = item.type
 
+				//显示编辑框
 				this.editFlag = true
 			},
 			//删除
 			del (item) {
-				console.log(item)
+
+				const callBack = (response) => {
+					if (response.body.status == '200') {
+						this.$message({
+				          message: '删除成功!',
+				          type: 'success'
+				        });
+						//请求数据刷新 
+						this.getData();
+					}else{
+						this.$message.error(response.body.msg)
+					}
+				};
+
+				var params = {
+					studentNo : item.studentNo,
+					mac : item.mac
+				}
+
+				postOriginData(this, window.getDeleteBindInfoURL, params, callBack);
 			},
 			//更新资料
 			updateStudentData () {
-				console.log("更新资料")
-				console.log(this.editStudent)
+
+				const callBack = (response) => {
+					if (response.body.status == '200') {
+						this.$message({
+				          message: '更新成功!',
+				          type: 'success'
+				        });
+						//请求数据刷新 
+						this.getData();
+
+						this.editFlag = false
+					}else{
+						this.$message.error(response.body.msg)
+					}
+				};
+
+				var params = {
+					studentNo : this.editStudent.studentNo,
+					userName : this.editStudent.userName,
+					mac : this.editStudent.mac,
+					type : this.editStudent.type
+				}
+
+				postOriginData(this, window.getUpdateBindInfoURL, params, callBack);
 			},
 			sportsData (item) {
 				$('#container1').highcharts({
