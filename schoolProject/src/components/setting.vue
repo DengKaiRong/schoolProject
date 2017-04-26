@@ -1,69 +1,30 @@
 <template>
 	<div>
 		<!--资料编辑框-->
-
 		<el-dialog title="修改资料" v-model="editFlag">
 			  <el-form>
 			    <el-form-item label="学号" :label-width="formLabelWidth">
-			      	<el-input auto-complete="off"></el-input>
+			      	<el-input auto-complete="off" v-model="editStudent.studentNo" :disabled="true"></el-input>
 			    </el-form-item>
-			    <el-form-item label="活动名称" :label-width="formLabelWidth">
-			  		<el-input auto-complete="off"></el-input>
+			    <el-form-item label="姓名" :label-width="formLabelWidth">
+			  		<el-input auto-complete="off" v-model="editStudent.userName"></el-input>
 			    </el-form-item>
-			    <el-form-item label="手环":label-width="formLabelWidth">
-			      	<el-select placeholder="请选择手环">
-				        <el-option label="区域一" value="shanghai"></el-option>
-				        <el-option label="区域二" value="beijing"></el-option>
+			    <el-form-item label="手环类别":label-width="formLabelWidth">
+			      	<el-select v-model="editStudent.type">
+				        <el-option label="学生手环1" value="学生手环1"></el-option>
+				        <el-option label="学生手环2" value="学生手环2"></el-option>
+				        <el-option label="学生手环3" value="学生手环3"></el-option>
 				    </el-select>
 			    </el-form-item>
-			    <el-form-item label="Mac":label-width="formLabelWidth">
-			  		<el-input auto-complete="off"></el-input>
+			    <el-form-item label="Mac地址":label-width="formLabelWidth">
+			  		<el-input auto-complete="off" v-model="editStudent.mac" :disabled="true"></el-input>
 			    </el-form-item>
 			  </el-form>
 			  <div slot="footer" class="dialog-footer">
-			  	<el-button @click="editFlag = false">确定</el-button>
+			  	<el-button @click="updateStudentData">确定</el-button>
 			    <el-button @click="editFlag = false">取 消</el-button>
 			  </div>
 		</el-dialog>
-			
-		<div class="editcon">
-			<div class="ed_icon">
-				<form action="#">
-				<div class="xy_inline">
-					      <label>学号：</label>
-					      <div class="xy_dinput">
-					        <input  value="0004"  type="text"  class="xy_input">
-					      </div>
-					    </div>
-				<div class="xy_inline">
-					      <label>姓名：</label>
-					      <div class="xy_dinput">
-					        <input value="东皇太一"  type="text"  class="xy_input">
-					      </div>
-					    </div>
-				<div class="xy_inline">
-					      <label>手环：</label>
-					      <div class="xy_dinput">
-					         <select class="xy_select">
-	        					<option value="学生手环1">学生手环1</option>
-	        					<option value="学生手环2">学生手环2</option>
-	        					<option value="学生手环3">学生手环3</option>
-	      					</select>
-					      </div>
-					      </div>
-				<div class="xy_inline">
-					<label>手环MAC：</label>
-					 <div class="xy_dinput">
-					  	<input value="02:XX:XX:XX:XX" type="text"  class="xy_input">
-					  </div>
-				</div>
-				<div class="ed_oper">
-					<input class="xy_but" type="submit" value="保存"/>
-					<a href="javascript:void(0)">取消</a>
-				</div>
-			</form>
-			</div>
-		</div>
 		<!--右侧内容-->
 		<div class="xycon">
 			<div class="xycona">
@@ -172,6 +133,12 @@
 					mac:"",
 					type:"学生手环1"
 				},
+				editStudent:{
+					studentNo:"",
+					userName:"",
+					mac:"",
+					type:""
+				},
 				editFlag:false,
 				formLabelWidth: '70px'
 			};
@@ -245,10 +212,22 @@
 			//编辑框
 			edit (item) {
 				console.log(item)
+
+				this.editStudent.studentNo = item.studentNo
+				this.editStudent.userName = item.userName
+				this.editStudent.mac = item.mac
+				this.editStudent.type = item.type
+
 				this.editFlag = true
 			},
+			//删除
 			del (item) {
 				console.log(item)
+			},
+			//更新资料
+			updateStudentData () {
+				console.log("更新资料")
+				console.log(this.editStudent)
 			},
 			sportsData (item) {
 				$('#container1').highcharts({
