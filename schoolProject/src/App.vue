@@ -6,9 +6,9 @@
     <div class="xynav">
       <div class="xynavc">
         <ul>
-          <li class="on">
-            <h4>校园项目</h4>
-            <div>
+          <li :class="{'on': flag}">
+            <h4 @click="showLeftMenu">校园项目</h4>
+            <div v-if="flag">
               <router-link to="/summary">汇总报表</router-link>
               <router-link to="/setting">设置资料</router-link>
             </div>
@@ -28,9 +28,19 @@
 export default {
   name: 'app',
   created () {},
+  data () {
+    return {
+        flag:true
+    }
+  },
   mounted () {
   },
-  methods: {}
+  methods: {
+      //显隐左侧菜单栏
+      showLeftMenu () {
+        this.flag = !this.flag
+      }
+  }
 }
 </script>
 

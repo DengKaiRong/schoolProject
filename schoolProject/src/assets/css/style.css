@@ -22,7 +22,7 @@ a:hover{ color:#f28203; text-decoration:none;}
 .xynavc li h4:hover{ border-left:5px solid #00b2b2; } 
 .xynavc li div a{height: 45px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;  padding: 0 20px; font-size: 14px; color: #c2c2c2; line-height: 40px; display: block;}
 .xynavc li div a:hover{ background: #595d6c;} 
-.xynavc li div a.cur{ background: #00b2b2; color: #fff;}
+.active{ background: #00b2b2; color: #fff !important;}
 
 /*内容*/
 .xycon{position: absolute; z-index: 2; top:60px; left: 200px; bottom: 0; right: 0; background: #e2e2e2; overflow-x:auto;}

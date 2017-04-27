@@ -62,8 +62,8 @@
 					    </div>
 					    <div class="xy_inline">
 					      <div class="xy_dinput">
-					      	<label></label>
-					        <input class="xy_but" @click="save_add" value="保存">
+					       	<label></label>
+					        <input type="button" class="xy_but" @click="save_add" value="保存">
 					      </div>
 					    </div>
 	  				</div>
