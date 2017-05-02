@@ -184,7 +184,7 @@
 					const callBack = (response) => {
 						if (response.body.status == '200') {
 							this.$message({
-					          message: '更新成功!',
+					          message: '保存成功!',
 					          type: 'success'
 					        });
 							//请求数据刷新 
@@ -230,25 +230,42 @@
 			//删除
 			del (item) {
 
-				const callBack = (response) => {
-					if (response.body.status == '200') {
-						this.$message({
-				          message: '删除成功!',
-				          type: 'success'
-				        });
-						//请求数据刷新 
-						this.getData();
-					}else{
-						this.$message.error(response.body.msg)
+				this.$confirm('确认删除学生绑定信息，是否继续?', '提示', {
+
+		          confirmButtonText: '确定',
+		          cancelButtonText: '取消',
+		          type: 'warning'
+
+		        }).then(() => {
+		          const callBack = (response) => {
+						if (response.body.status == '200') {
+							this.$message({
+					          message: '删除成功!',
+					          type: 'success'
+					        });
+							//请求数据刷新 
+							this.getData();
+						}else{
+							this.$message.error(response.body.msg)
+						}
+					};
+
+					var params = {
+						studentNo : item.studentNo,
+						mac : item.mac
 					}
-				};
 
-				var params = {
-					studentNo : item.studentNo,
-					mac : item.mac
-				}
+					postOriginData(this, window.getDeleteBindInfoURL, params, callBack);
 
-				postOriginData(this, window.getDeleteBindInfoURL, params, callBack);
+		        }).catch(() => {
+
+		          this.$message({
+		            type: 'info',
+		            message: '已取消删除'
+		          });  
+
+		        });
+				
 			},
 			//更新资料
 			updateStudentData () {

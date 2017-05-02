@@ -2,6 +2,7 @@
 
 export default function () {
   window.baseURL = 'http://www.careeach.net:8090/Campus/';
+  // window.baseURL = 'http://localhost:8080/Campus/';
 
   //设置学生与手环绑定
   const setBindURL             = 'setBind';

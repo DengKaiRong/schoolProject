@@ -23,7 +23,7 @@
 								<td>{{val.type}}</td>
 								<td>{{val.steps}}</td>
 								<td>{{val.number}}</td>
-								<td>{{val.bra_id}}</td>
+								<td>{{index + 1}}</td>
 							</tr>
 						</table>
 					</div>
