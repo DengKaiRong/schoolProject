@@ -11,6 +11,7 @@
             <div v-if="flag">
               <router-link to="/summary">汇总报表</router-link>
               <router-link to="/setting">设置资料</router-link>
+              <router-link to="/personal">学生健康明细</router-link>
             </div>
           </li>
         </ul>

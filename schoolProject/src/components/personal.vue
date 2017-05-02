@@ -69,8 +69,15 @@
   import { postOriginData } from '../framework/service.js';
   export default {
     created () {
+
       const id = this.$route.params.id;
       this.getDetail(id);
+
+      let self = this
+      this.intervalid1 = setInterval(() => {
+        self.getDetail(id)
+      }, 60000)
+
     },
     mounted () {
       var sport = {

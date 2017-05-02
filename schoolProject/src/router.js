@@ -18,6 +18,11 @@ var routes = [
       path: '/personal/:id',
       name: 'personal',
       component: require('./components/personal.vue')
+    },
+    {
+      path: '/personal',
+      name: 'personal',
+      component: require('./components/personal.vue')
     }
 ]
 
