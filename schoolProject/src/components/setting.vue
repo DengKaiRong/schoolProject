@@ -147,7 +147,7 @@
 			getData () {
 				const callBack = (response) => {
 					if (response.body.status == '200') {
-						this.list = response.body.result.healthData;
+						this.list = response.body.result.stuData;
 						// 运动数据对比展示
 						const sportsData =  response.body.result.sportsData[0];
 						var sport = {
