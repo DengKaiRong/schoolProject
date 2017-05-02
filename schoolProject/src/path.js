@@ -23,4 +23,9 @@ export default function () {
   //查看学生健康详情
   const getHealthDetailURL     = 'getHealthDetail';
   window.getHealthDetailURL    = baseURL + getHealthDetailURL;
+
+  //查看已绑定的手环列表
+  const getStuBindReportURL     = 'getStuBindReport';
+  window.getStuBindReportURL    = baseURL + getStuBindReportURL;
+
 }

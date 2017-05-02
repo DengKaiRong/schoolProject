@@ -174,7 +174,7 @@
 						this.$message.error(response.body.msg)
 					}
 				};
-				getOriginData(this, window.getHealthReportURL, {}, callBack);
+				getOriginData(this, window.getStuBindReportURL, {}, callBack);
 			},
 			//添加学生绑定手环
 			save_add (){
