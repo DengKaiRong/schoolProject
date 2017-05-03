@@ -44,6 +44,7 @@ a:hover{ color:#f28203; text-decoration:none;}
 .xy_inline label{    float: left;display: block;padding: 9px 15px;width: 80px;font-weight: 400;text-align: right;line-height: 20px;}
 .xy_dinput{display: inline-block;vertical-align: middle;    float: left;width: 190px;margin-right: 10px;}
 .xy_input,.xy_select{ height: 38px;line-height: 38px;border: 1px solid #e6e6e6;background-color: #fff;border-radius: 2px;display: block;width: 100%;padding-left: 10px;}
+.kr_select{display: inline-block;vertical-align: middle;    float: left;width: 202px;height: 40px;line-height: 38px;border: 1px solid #e6e6e6;background-color: #fff;border-radius: 2px;display: block;padding-left: 10px;}
 .xy_but{height: 38px;line-height: 38px; display: inline-block; padding:0 20px; background: #009688; text-align: center; color: #fff; cursor: pointer; border-radius: 5px;}
 .died{ background: #eee;}
 .xy_but:hover{ background: #0bac9d;}

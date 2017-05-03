@@ -7,9 +7,9 @@
 				<div class="xy_icon">
 				    <div class="xy_inline">
 				      <label>学号：</label>
-				      <div class="xy_dinput">
-				        <input type="text" v-model="data.studentNo"  class="xy_input">
-				      </div> 
+              <select class="kr_select" v-model="data.studentNo">
+                  <option v-for="(val, index) of stuList">{{val}}</option>
+              </select>
 				    </div>
 				    <div class="xy_inline">
 				      <label>姓名：</label>
@@ -74,13 +74,13 @@
       this.getStuList()
 
       //获取明细
-      const id = this.$route.params.id;
-      this.getDetail(id);
+      this.data.studentNo = this.$route.params.id;
+      this.getDetail(this.data.studentNo);
 
       //定时器
       let self = this
-      this.intervalid1 = setInterval(() => {
-        self.getDetail(id)
+      this.intervalid = setInterval(() => {
+        self.getDetail(self.data.studentNo)
       }, 60000)
 
     },
@@ -103,6 +103,10 @@
         },
         stuList:[]
       };
+    },
+    beforeDestroy: function () {
+        //销毁定时器
+        clearInterval(this.intervalid)
     },
     methods: {
       getDetail (id) {
