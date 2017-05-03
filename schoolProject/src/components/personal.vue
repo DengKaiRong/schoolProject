@@ -9,7 +9,7 @@
 				      <label>学号：</label>
 				      <div class="xy_dinput">
 				        <input type="text" v-model="data.studentNo"  class="xy_input">
-				      </div>
+				      </div> 
 				    </div>
 				    <div class="xy_inline">
 				      <label>姓名：</label>
@@ -70,9 +70,14 @@
   export default {
     created () {
 
+      //获取学生列表
+      this.getStuList()
+
+      //获取明细
       const id = this.$route.params.id;
       this.getDetail(id);
 
+      //定时器
       let self = this
       this.intervalid1 = setInterval(() => {
         self.getDetail(id)
@@ -95,7 +100,8 @@
           steps: '',
           date: '',
           number: ''
-        }
+        },
+        stuList:[]
       };
     },
     methods: {
@@ -157,8 +163,24 @@
         postOriginData(this, window.getHealthDetailURL, { studentNo: id }, callBack);
 
       },
+      getStuList () {
+        const callBack = (response) => {
+
+          if (response.body.status == '200') {
+            if (JSON.stringify(response.body.result) == '{}'){
+                this.$message.error('获取学生学号列表数据失败!')
+            }else{
+                this.stuList = response.body.result;            
+            }
+          }else{
+            this.$message.error(response.body.msg)
+          }
+        };
+
+        postOriginData(this, window.getStudentNoURL, {}, callBack);
+
+      },
       search () {
-        console.log(this.data.studentNo)
         this.getDetail(this.data.studentNo);
       },
       sportData (item) {

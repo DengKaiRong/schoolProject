@@ -4,7 +4,12 @@ import VueRouter from 'vue-router'
 exports.VueRouter = VueRouter
 
 var routes = [
-  {
+    //重定向
+    {
+      path: '/',
+      redirect: 'summary'
+    },
+    {
       path: '/setting',
       name: 'setting',
       component: require('./components/setting.vue')

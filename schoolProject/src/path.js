@@ -28,4 +28,8 @@ export default function () {
   const getStuBindReportURL     = 'getStuBindReport';
   window.getStuBindReportURL    = baseURL + getStuBindReportURL;
 
+  //获取学生学号
+  const getStudentNoURL         = 'getStudentNo';
+  window.getStudentNoURL        = baseURL + getStudentNoURL;
+
 }
