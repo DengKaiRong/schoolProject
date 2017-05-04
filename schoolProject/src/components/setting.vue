@@ -18,7 +18,7 @@
 			    </el-form-item>
 			    <el-form-item label="Mac地址":label-width="formLabelWidth">
 			  		<el-input auto-complete="off" v-model="editStudent.mac" :disabled="true"></el-input>
-			    </el-form-item>
+			    </el-form-item>	
 			  </el-form>
 			  <div slot="footer" class="dialog-footer">
 			  	<el-button @click="updateStudentData">确定</el-button>

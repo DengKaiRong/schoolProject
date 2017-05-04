@@ -81,7 +81,7 @@
       let self = this
       this.intervalid = setInterval(() => {
         self.getDetail(self.data.studentNo)
-      }, 60000)
+      }, 40000)
 
     },
     mounted () {
